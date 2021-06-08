@@ -5,7 +5,11 @@ module.exports = {
     removeDeprecatedGapUtilities: true
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        menu: ['Virgil']
+      }
+    },
   },
   variants: {
     extend: {},
