@@ -1,9 +1,9 @@
 import { Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import Dinamicas from './pages/Dinamicas';
+import Home from '../pages/Home';
+import Dashboard from '../pages/Dashboard';
+import Dinamicas from '../pages/Dinamicas';
 
-function Router() {
+function Main() {
   return (
     <Switch>
         <Route exact path='/' component={Home} />
@@ -14,4 +14,4 @@ function Router() {
   );
 }
 
-export default Router;
+export default Main;
