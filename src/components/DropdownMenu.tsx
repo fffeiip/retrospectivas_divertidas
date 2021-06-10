@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 function DropdownMenu() {
 
-    const { handleLogin } = useContext(AuthContext)
     const [dropdownOpen, setDropdownOpen] = useState(false)
 
     return (
@@ -20,13 +19,21 @@ function DropdownMenu() {
                     </svg>
                 </button>
 
-                {dropdownOpen && <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-                    <Link to="/login" onClick={() => handleLogin(false)} className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        Sign Out</Link>
-                </div>}
+                {dropdownOpen && <DropdownMenuItems/>}
             </div>
         </div>
     );
+}
+
+function DropdownMenuItems() {
+    const { signed, handleLogin } = useContext(AuthContext)
+
+    return (
+    <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+    <Link to="/login" onClick={() => handleLogin(!signed)} className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
+    {signed ? "Logout" : "Login"}
+    </Link>
+</div>);
 }
 
 export default DropdownMenu;
