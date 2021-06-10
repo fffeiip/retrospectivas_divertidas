@@ -1,12 +1,12 @@
 import { useContext } from 'react'
-import Main from './main'
+import AuthRoutes from './AuthRoutes'
+import UsualRoutes from './UsualRoutes'
 import AuthContext from '../contexts/auth'
-import Login from '../pages/Login'
 
 function Router() {
     const { signed } = useContext(AuthContext)
     
-    return signed ? <Main /> : <Login />
+    return signed ? <AuthRoutes /> : <UsualRoutes />
 }
 
 export default Router;
