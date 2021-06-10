@@ -6,7 +6,7 @@ function Login() {
     const {handleLogin} = useContext(AuthContext)
     return (
         <div>
-            <Link to="/dashboard" onClick={() => handleLogin(true)} className="text-red-700 hover:bg-black hover:text-green-400"> clica aqui para login </Link>
+            <Link to="/dashboard" onClick={() => handleLogin(true)} className="text-red-700 hover:bg-black hover:text-green-400"> clique aqui para login </Link>
         </div>
     );
 }

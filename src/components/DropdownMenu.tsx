@@ -10,7 +10,7 @@ function DropdownMenu() {
 
     return (
         <div className="flex justify-end">
-            <div onClick={() => setDropdownOpen(false)} className="fixed w-full h-full inset-x-0 inset-y-40"></div>
+            {/* <div onClick={() => setDropdownOpen(false)} className="fixed w-full h-full inset-x-0 inset-y-40"></div> */}
             <div className="relative" onClick={() => setDropdownOpen(!dropdownOpen)} >
                 <button className="relative flex flex-row items-end justify-around z-10 rounded-md  p-2 focus:outline-none">
                     <FontAwesomeIcon className="fa-2x" icon={faUser} />
@@ -27,7 +27,6 @@ function DropdownMenu() {
 
 function DropdownMenuItems() {
     const { signed, handleLogin } = useContext(AuthContext)
-
     return (
     <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
     <Link to="/login" onClick={() => handleLogin(!signed)} className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">

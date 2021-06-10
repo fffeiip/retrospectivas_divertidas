@@ -1,5 +1,5 @@
 function Dinamicas() {
-    return (<></>);
+    return (<div>Lista de dinâmicas</div>);
 }
 
 export default Dinamicas;
