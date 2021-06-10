@@ -1,4 +1,3 @@
-@import url("https://excalidraw.com/Virgil.woff2");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,3 +5,9 @@
 @layer utilities {
     body { min-width:700px; }
 }
+
+@font-face {
+    font-family: 'Virgil';
+    src: local('Roboto'), url('/src/assets/fonts/Virgil.woff2') format('woff2');
+  }
+  
