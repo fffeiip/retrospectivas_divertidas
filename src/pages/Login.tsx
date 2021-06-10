@@ -1,6 +1,13 @@
+import {useContext } from 'react'
+import AuthContext from '../contexts/auth'
+import { Link } from 'react-router-dom'
+
 function Login() {
+    const {handleLogin} = useContext(AuthContext)
     return (
-        <div><p className="text-black"> esqueci de escrever o texto</p> </div>
+        <div>
+            <Link to="/dashboard" onClick={() => handleLogin(true)} className="text-red-700 hover:bg-black hover:text-green-400"> clica aqui para login </Link>
+        </div>
     );
 }
 

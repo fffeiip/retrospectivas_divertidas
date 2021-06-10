@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import AuthContext from '../contexts/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 function DropdownMenu() {
 
+    const { handleLogin } = useContext(AuthContext)
     const [dropdownOpen, setDropdownOpen] = useState(false)
 
     return (
@@ -18,16 +21,8 @@ function DropdownMenu() {
                 </button>
 
                 {dropdownOpen && <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-                    <a href="#" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        your profile</a>
-                    <a href="#" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        Your projects</a>
-                    <a href="#" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        Help</a>
-                    <a href="#" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        Settings</a>
-                    <a href="#" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-                        Sign Out</a>
+                    <Link to="/login" onClick={() => handleLogin(false)} className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
+                        Sign Out</Link>
                 </div>}
             </div>
         </div>
