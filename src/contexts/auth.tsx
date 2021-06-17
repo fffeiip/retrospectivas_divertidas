@@ -1,27 +1,34 @@
 import React, { useState, createContext } from 'react';
 
 interface AuthContextData {
-    signed : boolean;
-    handleLogin(a:boolean) : void;
-}
-
-interface User {
-    name : string;
+    signed: boolean;
+    apiKey: string;
+    handleLogin(): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({ children }) => {
 
-    const [user, setUser]  = useState<User | null>(null);
+    const [apiKey, setApiKey] = useState<string>("");
 
-    // @TODO
-    async function handleLogin(a : boolean) {
-        let b = a ? {name: "Felipe"} : null
-        setUser(b);
+    async function handleLogin() {
+        const response = await window.fetch('http://localhost:8000/login', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                // 'api_token': process.env.API_KEY!
+            },
+            body: JSON.stringify({
+                email: "2asds@email.com",
+                password: "teste12"
+            }),
+        })
+        const { api_key } = await response.json()
+        setApiKey(api_key)
     }
     return (
-        <AuthContext.Provider value={{ signed: !!user, handleLogin }}>
+        <AuthContext.Provider value={{ signed: !!apiKey, handleLogin, apiKey }}>
             {children}
         </AuthContext.Provider>
     );
