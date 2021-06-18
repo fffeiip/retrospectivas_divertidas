@@ -8,9 +8,7 @@ function UsualRoutes() {
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
-        <Route path='/dinamicas' component={Dinamicas} />
-        {/* @TODO */}
-        <Route path='/dinamicas/:name' component={Dinamicas} />
+        <Route path='/dinamicas' component={Dinamicas} />        
     </Switch>
     
   );
