@@ -11,23 +11,23 @@ function Header() {
     let middleware = signed ? "/dashboard" : "/login";
     return (
         <div className="bg-green-400 flex-row h-1/6 p-4">
-            <div className=" flex items-end justify-center h-full">
-                <div className="w-1/5 flex">
+            <div className=" flex items-end justify-start h-full">
+                <div className="w-1/5 flex flex-grow-0">
                     <ProjectLogo />
                 </div>
-                <div className="w-3/5 flex h-full flex-shrink-0 items-end min-w-min">
-                    <ul className="flex-row flex justify-around min-w-full font-menu">
-                        <li className="hover:text-yellow-400">
+                <div className="w-3/5 flex h-full items-end min-w-min">
+                    <ul className="flex-row flex min-w-full font-menu">
+                        <li className="hover:text-yellow-400 px-6">
                             <Link to="/">
                                 Home
                             </Link>
                         </li>
-                        <li className="hover:text-yellow-400">
+                        {signed && <li className="hover:text-yellow-400 px-6">
                             <Link to={middleware}>
                                 Dashboard
                             </Link>
-                        </li>
-                        <li className="hover:text-yellow-400">
+                        </li>}
+                        <li className="hover:text-yellow-400 px-6">
                             <Link to="/dinamicas">
                                 Dinâmicas
                             </Link>

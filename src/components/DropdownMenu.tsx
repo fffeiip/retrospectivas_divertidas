@@ -19,7 +19,7 @@ function DropdownMenu() {
                     </svg>
                 </button>
 
-                {dropdownOpen && <DropdownMenuItems/>}
+                {dropdownOpen && <DropdownMenuItems />}
             </div>
         </div>
     );
@@ -28,11 +28,20 @@ function DropdownMenu() {
 function DropdownMenuItems() {
     const { signed } = useContext(AuthContext)
     return (
-    <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-    <Link to="/login" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
-    {signed ? "Logout" : "Login"}
-    </Link>
-</div>);
+        <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+                {signed ? <Logout/> : <Login/>}
+        </div>);
+}
+
+function Login() {
+    return (
+        <Link to="/login" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">Login</Link>
+    );
+}
+
+function Logout() {
+    let { handleLogin } = useContext(AuthContext)
+    return (<a className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white" onClick={() => handleLogin({email: '', password: ''})}>Logout</a>);
 }
 
 export default DropdownMenu;

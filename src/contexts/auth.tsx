@@ -1,9 +1,15 @@
 import React, { useState, createContext } from 'react';
+import { useHistory } from 'react-router-dom'
 
 interface AuthContextData {
     signed: boolean;
     apiKey: string;
-    handleLogin(): void;
+    handleLogin(json: LoginForm): void;
+}
+
+interface LoginForm {
+    email: string;
+    password: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -11,8 +17,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 export const AuthProvider: React.FC = ({ children }) => {
 
     const [apiKey, setApiKey] = useState<string>("");
-
-    async function handleLogin() {
+    let history = useHistory()
+    async function handleLogin(json: LoginForm) {
         const response = await window.fetch('http://localhost:8000/login', {
             method: 'POST',
             headers: {
@@ -20,12 +26,16 @@ export const AuthProvider: React.FC = ({ children }) => {
                 // 'api_token': process.env.API_KEY!
             },
             body: JSON.stringify({
-                email: "2asds@email.com",
-                password: "teste12"
+                email: json?.email,
+                password: json?.password
             }),
         })
         const { api_key } = await response.json()
         setApiKey(api_key)
+        localStorage.setItem("api_key", api_key)
+        let redirect_route = !!api_key ? "/dashboard" : "/login"
+        history.push(redirect_route)
+       
     }
     return (
         <AuthContext.Provider value={{ signed: !!apiKey, handleLogin, apiKey }}>
