@@ -41,7 +41,7 @@ function Login() {
 
 function Logout() {
     let { handleLogin } = useContext(AuthContext)
-    return (<a href="" className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white" onClick={() => handleLogin({email: '', password: ''})}>Logout</a>);
+    return (<button className="w-full px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white" onClick={() => handleLogin({email: '', password: ''})}>Logout</button>);
 }
 
 export default DropdownMenu;
