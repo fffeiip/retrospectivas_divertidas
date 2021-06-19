@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
 import AuthContext from '../contexts/auth'
 import { useFormik } from 'formik'
-import { Link } from 'react-router-dom'
 
 interface LoginJson {
     email?: string 
