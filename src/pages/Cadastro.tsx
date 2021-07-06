@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { useHistory, Link } from "react-router-dom";
 interface CadastroJson {
@@ -21,7 +21,6 @@ function isValidEmail(email: string) {
 }
 
 function Cadastro() {
-  
   const PASSWORD_MINCHAR = 8;
   const [errors, setErrors] = useState<FormError>({
     email: "",
@@ -29,8 +28,23 @@ function Cadastro() {
     password: "",
     password_confirm: "",
   });
-  
+
   let history = useHistory();
+
+  async function handleCadastro(values: CadastroJson) {
+    return await window.fetch("http://localhost:8000/api/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+        password_confirm: values.password_confirm,
+      }),
+    });
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -40,22 +54,13 @@ function Cadastro() {
       password_confirm: "",
     },
     onSubmit: (values) => {
-      async function handleCadastro(values: CadastroJson) {
-        const response = await window.fetch("http://localhost:8000/api/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            password_confirm: values.password_confirm,
-          }),
-        });
-      }
-      handleCadastro(values);
-      history.push('/login');
+      handleCadastro(values).then((response) => {
+        if (response.status === 201) {
+          history.push('/login');
+        } else {
+          response.json().then((e) => alert(e?.error?.message));
+        }
+      });
     },
     validate: (values) => {
       let errors: FormError = {};
@@ -73,7 +78,7 @@ function Cadastro() {
       }
       setErrors(errors);
       return errors;
-    }, 
+    },
   });
 
   return (
