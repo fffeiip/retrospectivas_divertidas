@@ -1,7 +1,6 @@
 import {  useState } from "react";
 import { useFormik } from "formik";
-import { useHistory } from "react-router-dom";
-
+import { useHistory, Link } from "react-router-dom";
 interface CadastroJson {
   email: string;
   name: string;
@@ -167,7 +166,12 @@ function Cadastro() {
             >
               Submit
             </button>
-            
+            <Link
+              to="/login"
+              className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-green-500 hover:text-white"
+            >
+              Login
+            </Link>
           </div>
         </form>
       </div>
