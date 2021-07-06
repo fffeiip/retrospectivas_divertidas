@@ -53,7 +53,6 @@ function Cadastro() {
             password_confirm: values.password_confirm,
           }),
         });
-        console.log(response)
       }
       handleCadastro(values);
       history.push('/login');
