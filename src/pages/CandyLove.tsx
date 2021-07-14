@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { indexOf } from "lodash";
-import { useEffect } from "react";
 
 interface Pessoa {
   nome: string;
@@ -14,7 +13,7 @@ interface SelectedPersons {
   [key: string]: string[];
 }
 
-interface CandyLove {
+interface CandyLoveD {
   [key: string]: any;
 }
 
@@ -33,7 +32,7 @@ function CandyLove() {
   const [currentPerson, setCurrentPerson] = useState<Pessoa | any>();
   const [participantes, setParticipantes] = useState<Pessoa[]>([]);
   
-  const candylove: CandyLove = {
+  const candylove: CandyLoveD = {
     red: {
       color: "bg-red-300",
       hoverColor: "hover:bg-red-700",

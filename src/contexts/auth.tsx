@@ -24,7 +24,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     history.push(redirect_route);
   }, [apiKey, history]);
   async function handleLogin(json: LoginForm) {
-    const response = await window.fetch("http://localhost:8000/login", {
+    const response = await window.fetch("https://retrospectivasd-api.herokuapp.com/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",

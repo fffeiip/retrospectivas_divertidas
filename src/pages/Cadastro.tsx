@@ -32,7 +32,7 @@ function Cadastro() {
   let history = useHistory();
 
   async function handleCadastro(values: CadastroJson) {
-    return await window.fetch("http://localhost:8000/api/users", {
+    return await window.fetch("https://retrospectivasd-api.herokuapp.com/api/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,10 @@ function Cadastro() {
         if (response.status === 201) {
           history.push('/login');
         } else {
-          response.json().then((e) => alert(e?.error?.message));
+          response.json().then((e) =>{
+            let mensagem_request = e?.error?.message;
+            alert(!mensagem_request.includes("SQLSTATE") ?  mensagem_request : "Erro na requisição")
+          });
         }
       });
     },
