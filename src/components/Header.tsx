@@ -8,7 +8,7 @@ function Header() {
 
     const { signed } = useContext(AuthContext);
     // @Todo
-    let middleware = signed ? "/dashboard" : "/login";
+    let middleware = signed ? "/candyLove" : "/login";
     return (
         <div className="bg-green-400 flex-row h-1/6 p-4">
             <div className=" flex items-end justify-start h-full">
@@ -24,14 +24,15 @@ function Header() {
                         </li>
                         {signed && <li className="hover:text-yellow-400 px-6">
                             <Link to={middleware}>
-                                Dashboard
+                                CandyLove
                             </Link>
                         </li>}
-                        <li className="hover:text-yellow-400 px-6">
+
+                        {/* <li className="hover:text-yellow-400 px-6">
                             <Link to="/dinamicas">
                                 Dinâmicas
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="w-1/5 justify-center h-full items-end flex">

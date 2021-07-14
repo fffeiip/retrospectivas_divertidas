@@ -19,7 +19,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [apiKey, setApiKey] = useState<string>("");
   let history = useHistory();
   useEffect(() => {
-    let redirect_route = !!apiKey ? "/dashboard" : "/login";
+    let redirect_route = !!apiKey ? "/candyLove" : "/login";
     localStorage.setItem("api_key", apiKey);
     history.push(redirect_route);
   }, [apiKey, history]);
